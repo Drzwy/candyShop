@@ -1,3 +1,7 @@
 <p>
   carrito works!
 </p>
+
+<div class="spacebetween" *ngFor="let candyStorage of cart">
+  <app-candy-cart [candyTaken]="candyStorage" (destroy)="remove($event)"></app-candy-cart>
+</div>

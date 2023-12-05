@@ -9,6 +9,7 @@ import { StoreComponent } from './components/store/store.component';
 import { CandyComponent } from './components/candy/candy.component';
 import { CatalogoComponent } from './components/store/catalogo/catalogo.component';
 import { CarritoComponent } from './components/store/carrito/carrito.component';
+import { CandyCartComponent } from './components/candy-cart/candy-cart.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CarritoComponent } from './components/store/carrito/carrito.component';
     CandyComponent,
     CatalogoComponent,
     CarritoComponent,
+    CandyCartComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

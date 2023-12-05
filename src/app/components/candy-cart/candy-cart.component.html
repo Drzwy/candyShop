@@ -1,0 +1,20 @@
+<div class="cartcard">
+    <img class="img" [src]="candyTaken.candy.photoLink" />
+    <div class="title">
+      {{candyTaken.candy.name}}
+    </div>
+    <div class="changeStock">
+      <button (click)="changeOne(-1)" class="changeStockButton">-</button>
+      <input
+        class="changeStockInput"
+        type="number"
+        name="stockChange"
+        id="stockChange"
+        [value]="candyTaken.stock"
+      />
+      <button (click)="changeOne(1)" class="changeStockButton">+</button>
+    </div>
+    <button (click)="deleteCandy()">
+        eliminar producto
+    </button>
+  </div>

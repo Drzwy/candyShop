@@ -1,4 +1,8 @@
-import { Injectable, ɵɵtrustConstantHtml } from '@angular/core';
+import {
+  Injectable,
+  numberAttribute,
+  ɵɵtrustConstantHtml,
+} from '@angular/core';
 import { CandyStorage } from '../models/CandyStorage';
 import { Observable, catchError, of } from 'rxjs';
 import { Candy } from '../models/Candy';
@@ -27,6 +31,10 @@ export class StoreService {
 
   public checkStorage(): Observable<CandyStorage[]> {
     return of(this.storage);
+  }
+
+  public checkCart(): Observable<CandyStorage[]> {
+    return of(this.cart);
   }
 
   public printCart(): void {
@@ -71,6 +79,21 @@ export class StoreService {
     }
   }
 
+  public changeStockInCart(
+    candy: Candy,
+    storageChange: number
+  ): Observable<boolean> {
+    let success = false;
+    try {
+      this.changeStock(candy, storageChange);
+      success = true;
+    } catch {
+      alert('error');
+    } finally {
+      return of(success);
+    }
+  }
+
   public changeStock(candy: Candy, storageChange: number): boolean {
     let success = false;
     for (let candyStorage of this.storage) {
@@ -87,6 +110,20 @@ export class StoreService {
     try {
       this.changeStock(candy, quantity);
       this.cart.push(new CandyStorage(candy, quantity));
+      success = true;
+    } catch {
+      alert('error');
+    } finally {
+      return of(success);
+    }
+  }
+
+  public removeFromCart(candyStorage: CandyStorage): Observable<boolean> {
+    let success = false;
+    try {
+      let index = this.cart.indexOf(candyStorage);
+      this.cart.splice(index, 1);
+      this.changeStock(candyStorage.candy, -candyStorage.stock);
       success = true;
     } catch {
       alert('error');

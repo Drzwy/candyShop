@@ -2,6 +2,7 @@ import { SlicePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Candy } from 'src/app/models/Candy';
+import { CandyStorage } from 'src/app/models/CandyStorage';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { StoreService } from 'src/app/services/store.service';
   styleUrls: ['./candy.component.css'],
 })
 export class CandyComponent implements OnInit {
-  @Input({ required: true }) candy!: Candy;
+  @Input({ required: true }) candyStorage!: CandyStorage;
   public stockChange: FormControl = new FormControl(0, [
     Validators.min(0),
     Validators.max(99),
@@ -27,7 +28,7 @@ export class CandyComponent implements OnInit {
   public addCandyToCart(): boolean {
     let success = false;
     this.storeService
-      .addToCart(this.candy, this.stockChange.value)
+      .addToCart(this.candyStorage.candy  , this.stockChange.value)
       .subscribe((result) => {
         if (result) {
           alert('funciono');

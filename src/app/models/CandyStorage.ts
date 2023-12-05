@@ -8,7 +8,7 @@ export class CandyStorage {
   }
 
   public changeStock(change: number) {
-    this.stock += change;
+    this.stock -= change;
   }
 
   public get candyName(): string {

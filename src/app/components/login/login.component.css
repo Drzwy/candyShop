@@ -1,0 +1,31 @@
+:root {
+  height: 100dvh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  text-align: left;
+}
+
+.formsinput {
+  width: 20rem;
+  margin: 10px;
+  padding: 10px;
+}
+
+.formsbutton {
+  width: 15rem;
+  margin: 0.5rem;
+}
+
+.formslabel {
+  font-size: x-large;
+}

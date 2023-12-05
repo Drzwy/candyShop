@@ -1,0 +1,30 @@
+<div class="card">
+  <img [src]="candy.photoLink" />
+  <div class="text">
+    <div class="titles">
+      <h1>
+        {{ candy.name }}
+      </h1>
+      {{ candy.description }}
+    </div>
+    <div class="subtitles">
+      {{ candy.flavour }}
+      {{ candy.colour }}
+    </div>
+  </div>
+  <div class="stock">
+    <button (click)="changeOne(-1)" class="changeStockButton">-</button>
+    <input
+      class="changeStockInput"
+      type="number"
+      name="stockChange"
+      id="stockChange"
+      [formControl]="stockChange"
+      [value]="stockChange.value"
+    />
+    <button (click)="changeOne(1)" class="changeStockButton">+</button>
+  </div>
+  <button class="addCandyButton" [disabled]="!stockChange.valid" (click)="addCandyToCart()">
+    añadir caramelo
+  </button>
+</div>

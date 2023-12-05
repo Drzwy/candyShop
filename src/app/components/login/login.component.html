@@ -1,0 +1,38 @@
+<div class="form center">
+  <label for="username" class="formslabel">Usuario</label>
+  <input
+    id="username"
+    type="text"
+    placeholder="Ingrese su Usuario"
+    class="formsinput"
+    [formControl]="username"
+  />
+
+  <label for="password" class="formslabel">Contraseña</label>
+  <input
+    id="password"
+    type="password"
+    placeholder="Ingrese su contraseña"
+    class="formsinput"
+    [formControl]="password"
+  />
+
+  <button
+    type="submit"
+    class="formsbutton"
+    (click)="login(username.value, password.value)"
+    [disabled]="!(username.valid && password.valid)"
+  >
+    Iniciar Sesión
+  </button>
+
+  <button
+    type="button"
+    class="formsbutton"
+    (click)="register(username.value, password.value)"
+  >
+    Registrar Usuario
+  </button>
+
+  <button type="button" class="formsbutton" (click)="showusers()">dev</button>
+</div>

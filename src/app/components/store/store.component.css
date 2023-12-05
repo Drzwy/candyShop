@@ -1,0 +1,16 @@
+.main {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+}
+
+.normal {
+  padding: 1em;
+}
+
+.store {
+  width: 70%;
+}
+
+.carrito {
+  width: 30%;
+}

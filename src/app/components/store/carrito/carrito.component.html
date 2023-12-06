@@ -1,12 +1,16 @@
 <div class="content">
-  <div class="header">
-    <h1>Carrito</h1>
-  </div>
+  <div class="header">Carrito</div>
 
+  <div *ngIf="cart.length == 0" class="message">
+    No tienes artículos en el carrito
+  </div>
   <div class="spacebetween" *ngFor="let candyStorage of cart">
     <app-candy-cart
       [candyTaken]="candyStorage"
       (destroy)="remove($event)"
     ></app-candy-cart>
+  </div>
+  <div *ngIf="!(cart.length == 0)" class="total">
+    Total: {{calcTotal()}}
   </div>
 </div>

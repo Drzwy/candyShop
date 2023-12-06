@@ -39,6 +39,14 @@
     display: flex;
     input {
       flex: 1;
+      text-align: center;
+    }
+
+    button {
+      font-size: 1em;
+      width: 2em;
+      height: 2em;
+      aspect-ratio: 1/1;
     }
   }
 

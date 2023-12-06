@@ -1,5 +1,4 @@
-<p>catalogo works!</p>
-
-<div *ngFor="let candyStorage of storage">
-  <app-candy [candyStorage]="candyStorage"></app-candy>
-</div>
+<app-candy
+  *ngFor="let candyStorage of storage"
+  [candyStorage]="candyStorage"
+></app-candy>

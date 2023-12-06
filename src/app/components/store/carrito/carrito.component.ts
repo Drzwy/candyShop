@@ -29,4 +29,12 @@ export class CarritoComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  public calcTotal(): number {
+    let total = 0;
+    for (let CS of this.cart) {
+      total += CS.stock * CS.candy.price;
+    }
+    return total
+  }
 }

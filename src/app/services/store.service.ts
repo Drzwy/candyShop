@@ -18,14 +18,36 @@ export class StoreService {
     this.storage.push(
       new CandyStorage(
         new Candy(
-          'caca',
-          'caca',
-          'caca',
-          'caca',
+          'Paletas',
+          'Un surtido de paletas de azúcar',
+          'Sabores Surtidos',
+          'Colores Surtidos',
           500,
           'https://www.funtastyc.es/blog/wp-content/uploads/2023/03/receta_como_hacer_caramelos-1-810x560.jpg'
         ),
         10
+      ),
+      new CandyStorage(
+        new Candy(
+          'Gomitas',
+          'Varias gomitas y caramelos muy ácidos!',
+          'Manzana, Naranja y Limón',
+          'Colores Surtidos',
+          1000,
+          'https://img2.rtve.es/i/?w=1600&i=1628606891995.jpg'
+        ),
+        20
+      ),
+      new CandyStorage(
+        new Candy(
+          'Chocolates',
+          'Múltiples chocolatitos de colores',
+          'Chocolate',
+          'Colores Surtidos',
+          200,
+          'https://www.latercera.com/resizer/LqrpUY7U9ddANIXlL_xk354L7Wg=/900x600/smart/cloudfront-us-east-1.images.arcpublishing.com/copesa/D3CRXIZHXND2TJFWQK6VC4YSG4.jpeg'
+        ),
+        5
       )
     );
   }

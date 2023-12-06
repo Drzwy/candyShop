@@ -1,0 +1,13 @@
+.caca {
+  height: 2em;
+  text-align: center;
+  justify-content: center;
+  background-color: pink;
+
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+
+  font-size: 1.5em;
+
+}

@@ -13,8 +13,7 @@ import { StoreService } from 'src/app/services/store.service';
 export class CandyComponent implements OnInit {
   @Input({ required: true }) candyStorage!: CandyStorage;
   public stockChange: FormControl = new FormControl(0, [
-    Validators.min(0),
-    Validators.max(99),
+    Validators.min(1)
   ]);
 
   constructor(private storeService: StoreService) {}

@@ -65,7 +65,7 @@ export class LoginService implements OnInit {
     if (sessionStorage.getItem('token')) {
       notLoggedIn = false;
       this.router.navigate(['home']);
-      confirm('no puedes ir al login');
+      confirm('No puedes ir al login');
     }
 
     return of(notLoggedIn);

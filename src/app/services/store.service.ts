@@ -109,12 +109,27 @@ export class StoreService {
     let success = false;
     try {
       this.changeStock(candy, quantity);
-      this.cart.push(new CandyStorage(candy, quantity));
+      this.addNoDuplicate(candy, quantity);
       success = true;
     } catch {
       alert('error');
     } finally {
       return of(success);
+    }
+  }
+
+  public addNoDuplicate(candy: Candy, quantity: number): void {
+    let found = false;
+    for (let candyStorage of this.cart) {
+      if (candyStorage.candyName == candy.name) {
+        candyStorage.changeStock(-quantity);
+        found = true;
+      }
+    }
+
+    if (!found) {
+      let candyStorage = new CandyStorage(candy, quantity);
+      this.cart.push(candyStorage);
     }
   }
 
@@ -130,5 +145,17 @@ export class StoreService {
     } finally {
       return of(success);
     }
+  }
+
+  public stockLeftFromCandy(candy: Candy): Observable<number> {
+    let stockLeft = -1;
+
+    for (let candyStorage of this.storage) {
+      if (candy == candyStorage.candy) {
+        stockLeft = candyStorage.stock
+      }
+    }
+
+    return of(stockLeft);
   }
 }

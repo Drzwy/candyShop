@@ -21,7 +21,27 @@ export class CandyCartComponent implements OnInit {
   ngOnInit(): void {}
 
   public changeOne(stockChange: number): void {
-    this.candyTaken.stock += stockChange;
+    this.storeService
+      .stockLeftFromCandy(this.candyTaken.candy)
+      .subscribe((stockLeft) => {
+        if (stockLeft != -1) {
+          if (
+            this.candyTaken.stock + stockChange < 0 ||
+            stockChange > stockLeft
+          ) {
+            alert('No hay stock disponible para realizar esa operación');
+            return;
+          }
+          if (this.candyTaken.stock + stockChange == 0) {
+            this.deleteCandy();
+            return;
+          }
+          this.candyTaken.stock += stockChange;
+          this.storeService.changeStock(this.candyTaken.candy, stockChange);
+        } else {
+          alert('Error, no se encontró el dulce por alguna razón');
+        }
+      });
   }
 
   public deleteCandy(): void {

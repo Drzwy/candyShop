@@ -11,7 +11,7 @@ import { StoreService } from 'src/app/services/store.service';
 export class CarritoComponent implements OnInit, OnDestroy {
   public cart: CandyStorage[] = [];
 
-  public subscription! : Subscription;
+  public subscription!: Subscription;
   constructor(private storeService: StoreService) {}
 
   ngOnInit() {

@@ -27,8 +27,19 @@ export class CandyComponent implements OnInit {
 
   public addCandyToCart(): boolean {
     let success = false;
+
+    if (this.stockChange.value <= 0) {
+      alert('Agrega un número válido de productos');
+      return false;
+    }
+
+    if (this.candyStorage.stock < this.stockChange.value) {
+      alert('No existe stock suficiente para que pidas esa cantidad');
+      return false;
+    }
+
     this.storeService
-      .addToCart(this.candyStorage.candy  , this.stockChange.value)
+      .addToCart(this.candyStorage.candy, this.stockChange.value)
       .subscribe((result) => {
         if (result) {
           alert('funciono');

@@ -1,4 +1,4 @@
-<div class="card">
+<div class="candycard">
   <img class="img" [src]="candyStorage.candy.photoLink" />
   <div class="text">
     <div class="titles">
@@ -13,7 +13,13 @@
     </div>
   </div>
   <div class="inStock">
-    <input type="number" name="inStock" id="inStock" disabled [value]="candyStorage.stock">
+    <input
+      type="text"
+      name="inStock"
+      id="inStock"
+      disabled
+      [value]="'Stock: ' + candyStorage.stock"
+    />
   </div>
   <div class="stock">
     <button (click)="changeOne(-1)" class="changeStockButton">-</button>

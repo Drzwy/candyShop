@@ -22,6 +22,7 @@ export class StoreService {
           'caca',
           'caca',
           'caca',
+          500,
           'https://www.funtastyc.es/blog/wp-content/uploads/2023/03/receta_como_hacer_caramelos-1-810x560.jpg'
         ),
         10
@@ -152,7 +153,7 @@ export class StoreService {
 
     for (let candyStorage of this.storage) {
       if (candy == candyStorage.candy) {
-        stockLeft = candyStorage.stock
+        stockLeft = candyStorage.stock;
       }
     }
 

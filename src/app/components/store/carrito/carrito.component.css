@@ -1,0 +1,17 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 204, 220);
+  height: 100%;
+}
+
+.header {
+  background-color: rgb(177, 6, 60);
+  color: rgb(255, 204, 220);
+
+  h1 {
+    font-size: 3em;
+    text-align: center;
+    padding: 0.5rem;
+  }
+}

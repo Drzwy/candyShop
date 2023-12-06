@@ -42,7 +42,6 @@ export class CandyComponent implements OnInit {
       .addToCart(this.candyStorage.candy, this.stockChange.value)
       .subscribe((result) => {
         if (result) {
-          alert('funciono');
           this.storeService.printCart();
           success = true;
         }

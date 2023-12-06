@@ -7,6 +7,7 @@ export class Candy {
     public description: string,
     public flavour: string,
     public colour: string,
+    public price: number,
     public photoLink: string
   ) {
     Candy.counter += 1;

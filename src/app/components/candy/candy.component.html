@@ -1,43 +1,49 @@
 <div class="candycard">
   <img class="img" [src]="candyStorage.candy.photoLink" />
-  <div class="text">
+  <div class="content">
     <div class="titles">
-      <h1>
-        {{ candyStorage.candy.name }}
-      </h1>
+      <div class="titlename">
+        <h1>
+          {{ candyStorage.candy.name }}
+        </h1>
+        <h2>
+          ${{ candyStorage.candy.price }}
+        </h2>
+      </div>
       {{ candyStorage.candy.description }}
+      <div class="subtitles">
+        {{ candyStorage.candy.flavour }}
+        {{ candyStorage.candy.colour }}
+      </div>
     </div>
-    <div class="subtitles">
-      {{ candyStorage.candy.flavour }}
-      {{ candyStorage.candy.colour }}
+    <div class="stock">
+      <input
+        class="stockInput"
+        type="text"
+        name="inStock"
+        id="inStock"
+        disabled
+        [value]="'Stock disponible: ' + candyStorage.stock"
+      />
+      <div class="inStock">
+        <button (click)="changeOne(-1)" >-</button>
+        <input
+          class="changeStockInput"
+          type="number"
+          name="stockChange"
+          id="stockChange"
+          [formControl]="stockChange"
+          [value]="stockChange.value"
+        />
+        <button (click)="changeOne(1)" >+</button>
+      </div>
+      <button
+        class="addCandyButton"
+        [disabled]="!stockChange.valid"
+        (click)="addCandyToCart()"
+      >
+        Añadir al carrito
+      </button>
     </div>
   </div>
-  <div class="inStock">
-    <input
-      type="text"
-      name="inStock"
-      id="inStock"
-      disabled
-      [value]="'Stock: ' + candyStorage.stock"
-    />
-  </div>
-  <div class="stock">
-    <button (click)="changeOne(-1)" class="changeStockButton">-</button>
-    <input
-      class="changeStockInput"
-      type="number"
-      name="stockChange"
-      id="stockChange"
-      [formControl]="stockChange"
-      [value]="stockChange.value"
-    />
-    <button (click)="changeOne(1)" class="changeStockButton">+</button>
-  </div>
-  <button
-    class="addCandyButton"
-    [disabled]="!stockChange.valid"
-    (click)="addCandyToCart()"
-  >
-    añadir caramelo
-  </button>
 </div>

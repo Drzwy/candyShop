@@ -1,0 +1,48 @@
+.cartcard {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0.5em;
+}
+
+.img {
+  height: 4em;
+  width: auto;
+  object-fit: cover;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.title {
+  display: flex;
+
+  h1 {
+    font-size: 2em;
+    flex: 1;
+  }
+
+  h2 {
+    font-size: 2em;
+    color: rgb(177, 6, 60);
+  }
+}
+
+.takenStock {
+  display: flex;
+  gap: 1em;
+
+  .stockChange {
+    display: flex;
+    input {
+      flex: 1;
+    }
+  }
+
+  button {
+    flex: 1;
+  }
+}

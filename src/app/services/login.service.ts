@@ -9,9 +9,9 @@ import { Observable, of } from 'rxjs';
 })
 export class LoginService implements OnInit {
   private users: User[] = [];
-  private activeUser: string = '';
 
   constructor(private location: Location, private router: Router) {
+    // aqui se registran los usuarios (simula backend)
     this.users.push(new User('caca', 'caca'));
   }
 
@@ -50,11 +50,15 @@ export class LoginService implements OnInit {
   }
 
   public isLoggedIn(): Observable<boolean> {
-    let token = sessionStorage.getItem('token');
     let loggedIn: boolean = false;
 
-    if (token) {
+    if (sessionStorage.getItem('token')) {
       loggedIn = true;
+    } else {
+      this.location.back();
+      setTimeout(() => {
+        confirm('No estás logeado');
+      }, 1);
     }
 
     return of(loggedIn);

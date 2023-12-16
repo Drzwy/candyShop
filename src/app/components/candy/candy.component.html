@@ -6,9 +6,7 @@
         <h1>
           {{ candyStorage.candy.name }}
         </h1>
-        <h2>
-          ${{ candyStorage.candy.price }}
-        </h2>
+        <h2>${{ candyStorage.candy.price }}</h2>
       </div>
       {{ candyStorage.candy.description }}
       <div class="subtitles">
@@ -27,7 +25,9 @@
         [value]="'Stock disponible: ' + candyStorage.stock"
       />
       <div class="inStock">
-        <button (click)="changeOne(-1)" >-</button>
+        <button (click)="changeOne(-1)" [disabled]="!stockChange.valid">
+          -
+        </button>
         <input
           class="changeStockInput"
           type="number"
@@ -35,8 +35,14 @@
           id="stockChange"
           [formControl]="stockChange"
           [value]="stockChange.value"
+          (input)="validateInput()"
         />
-        <button (click)="changeOne(1)" >+</button>
+        <button
+          (click)="changeOne(1)"
+          [disabled]="stockChange.value >= candyStorage.stock"
+        >
+          +
+        </button>
       </div>
       <button
         class="addCandyButton"

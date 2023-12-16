@@ -13,7 +13,8 @@ import { StoreService } from 'src/app/services/store.service';
 export class CandyComponent implements OnInit {
   @Input({ required: true }) candyStorage!: CandyStorage;
   public stockChange: FormControl = new FormControl(0, [
-    Validators.min(1)
+    Validators.min(1),
+    Validators.required,
   ]);
 
   constructor(private storeService: StoreService) {}
@@ -41,10 +42,21 @@ export class CandyComponent implements OnInit {
       .addToCart(this.candyStorage.candy, this.stockChange.value)
       .subscribe((result) => {
         if (result) {
-          this.storeService.printCart();
           success = true;
+          this.stockChange.setValue(0);
         }
       });
     return success;
+  }
+
+  public validateInput() {
+    let inputValue = this.stockChange.value;
+    let stock = this.candyStorage.stock;
+    
+    if (inputValue > stock) {
+      this.stockChange.setValue(stock);
+    } else if (inputValue < 0) {
+      this.stockChange.setValue(0);
+    }
   }
 }

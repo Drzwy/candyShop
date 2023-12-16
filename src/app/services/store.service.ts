@@ -60,10 +60,6 @@ export class StoreService {
     return of(this.cart);
   }
 
-  public printCart(): void {
-    console.log(this.cart);
-  }
-
   public insertStore(candy: Candy, stock: number): Observable<boolean> {
     let success: boolean = false;
     let newCandyStorage = new CandyStorage(candy, stock);

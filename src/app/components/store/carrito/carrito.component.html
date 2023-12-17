@@ -10,7 +10,5 @@
       (destroy)="remove($event)"
     ></app-candy-cart>
   </div>
-  <div *ngIf="!(cart.length == 0)" class="total">
-    Total: {{calcTotal()}}
-  </div>
+  <div *ngIf="!(cart.length == 0)" class="total">Total: ${{ calcTotal() }}</div>
 </div>

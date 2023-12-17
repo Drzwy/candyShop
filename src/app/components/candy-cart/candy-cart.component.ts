@@ -14,8 +14,6 @@ export class CandyCartComponent implements OnInit {
   @Output() public destroy: EventEmitter<CandyStorage> =
     new EventEmitter<CandyStorage>();
 
-  public subscription: Subscription = new Subscription();
-
   constructor(private storeService: StoreService) {}
 
   ngOnInit(): void {}
@@ -24,23 +22,26 @@ export class CandyCartComponent implements OnInit {
     this.storeService
       .stockLeftFromCandy(this.candyTaken.candy)
       .subscribe((stockLeft) => {
-        if (stockLeft != -1) {
-          if (
-            this.candyTaken.stock + stockChange < 0 ||
-            stockChange > stockLeft
-          ) {
-            alert('No hay stock disponible para realizar esa operación');
-            return;
-          }
-          if (this.candyTaken.stock + stockChange == 0) {
-            this.deleteCandy();
-            return;
-          }
-          this.candyTaken.stock += stockChange;
-          this.storeService.changeStock(this.candyTaken.candy, stockChange);
-        } else {
+        if (stockLeft == -1) {
           alert('Error, no se encontró el dulce por alguna razón');
         }
+        if (
+          this.candyTaken.stock + stockChange < 0 ||
+          stockChange > stockLeft
+        ) {
+          alert('No hay stock disponible para realizar esa operación');
+          return;
+        }
+        if (this.candyTaken.stock + stockChange == 0) {
+          this.deleteCandy();
+          return;
+        }
+        this.candyTaken.stock += stockChange;
+        this.storeService
+          .changeStockInCart(this.candyTaken.candy, stockChange)
+          .subscribe((result) => {
+            if (!result) alert('error');
+          });
       });
   }
 

@@ -24,8 +24,8 @@ export class CarritoComponent implements OnInit, OnDestroy {
 
   public remove(candyStorage: CandyStorage) {
     this.storeService.removeFromCart(candyStorage).subscribe((result) => {
-      if (result) {
-        console.log('enhorabuena');
+      if (!result) {
+        alert('error en eliminar');
       }
     });
   }
@@ -35,6 +35,6 @@ export class CarritoComponent implements OnInit, OnDestroy {
     for (let CS of this.cart) {
       total += CS.stock * CS.candy.price;
     }
-    return total
+    return total;
   }
 }

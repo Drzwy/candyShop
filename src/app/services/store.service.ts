@@ -1,20 +1,36 @@
-import {
-  Injectable,
-  numberAttribute,
-  ɵɵtrustConstantHtml,
-} from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { CandyStorage } from '../models/CandyStorage';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Candy } from '../models/Candy';
 
 @Injectable({
   providedIn: 'root',
 })
-export class StoreService {
+export class StoreService implements OnInit {
   private storage: CandyStorage[] = [];
   private cart: CandyStorage[] = [];
 
   constructor() {
+    this.constructStorage();
+    this.constructCart();
+  }
+
+  ngOnInit(): void {}
+
+  private constructCart() {
+    let savedcart = sessionStorage.getItem('cart');
+    if (savedcart == null) {
+      return;
+    }
+    let cart = atob(savedcart).split(';');
+    for (let item of cart) {
+      let cs: CandyStorage = JSON.parse(item);
+      let candy: Candy = this.findCandy(cs.candy);
+      this.addToCart(candy, cs.stock);
+    }
+  }
+
+  private constructStorage() {
     this.storage.push(
       new CandyStorage(
         new Candy(
@@ -50,6 +66,16 @@ export class StoreService {
         5
       )
     );
+  }
+
+  public findCandy(candy: Candy): Candy {
+    for (let cs of this.storage) {
+      if (candy.name === cs.candy.name) {
+        return cs.candy;
+      }
+    }
+    console.error('unreachable candy');
+    return candy;
   }
 
   public checkStorage(): Observable<CandyStorage[]> {
@@ -105,6 +131,7 @@ export class StoreService {
     let success = false;
     try {
       this.changeStock(candy, storageChange);
+      this.saveCart();
       success = true;
     } catch {
       alert('error');
@@ -129,6 +156,7 @@ export class StoreService {
     try {
       this.changeStock(candy, quantity);
       this.addNoDuplicate(candy, quantity);
+      this.saveCart();
       success = true;
     } catch {
       alert('error');
@@ -158,6 +186,7 @@ export class StoreService {
       let index = this.cart.indexOf(candyStorage);
       this.cart.splice(index, 1);
       this.changeStock(candyStorage.candy, -candyStorage.stock);
+      this.saveCart();
       success = true;
     } catch {
       alert('error');
@@ -176,5 +205,27 @@ export class StoreService {
     }
 
     return of(stockLeft);
+  }
+
+  public saveCart() {
+    // let cart = JSON.stringify(this.cart);
+    // console.log(cart);
+    let carttotext = '';
+    let count = 0;
+    for (let item of this.cart) {
+      if (count > 0) {
+        carttotext += ';';
+      }
+      carttotext += `${JSON.stringify(item)}`;
+
+      count++;
+    }
+
+    if (carttotext) {
+      carttotext = btoa(carttotext);
+      sessionStorage.setItem('cart', carttotext);
+    } else {
+      sessionStorage.removeItem('cart');
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -7,20 +7,17 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.css'],
 })
-export class StoreComponent implements OnInit {
+export class StoreComponent implements OnInit, OnDestroy {
   constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit() {}
 
+  ngOnDestroy(): void {}
+
   public logout(): void {
     this.loginService.logout().subscribe((result) => {
-      if (result) {
-        this.router.navigate(['login']);
-      } else {
-        alert('error');
-      }
+      if (!result) console.error('error logging out');
     });
+    this.router.navigate(['login']);
   }
-
-  
 }

@@ -11,7 +11,7 @@ import { StoreService } from 'src/app/services/store.service';
 export class CarritoComponent implements OnInit, OnDestroy {
   public cart: CandyStorage[] = [];
 
-  public subscription!: Subscription;
+  public subscription: Subscription = new Subscription();
   constructor(private storeService: StoreService) {}
 
   ngOnInit() {
@@ -20,7 +20,12 @@ export class CarritoComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.storeService.removeAllCandy().subscribe((result) => {
+      if (!result) console.error('error al limpiar carro');
+    });
+    this.subscription.unsubscribe();
+  }
 
   public remove(candyStorage: CandyStorage) {
     this.storeService.removeFromCart(candyStorage).subscribe((result) => {

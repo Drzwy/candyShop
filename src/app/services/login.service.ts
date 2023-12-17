@@ -32,6 +32,7 @@ export class LoginService implements OnInit {
     let success: boolean = false;
     if (sessionStorage.getItem('token')) {
       sessionStorage.removeItem('token');
+      sessionStorage.removeItem('cart');
       success = true;
     }
 
@@ -41,7 +42,6 @@ export class LoginService implements OnInit {
   public checkUser(username: string, password: string): boolean {
     let found: boolean = false;
     this.users.forEach((user) => {
-      console.log(user);
       if (username === user.getUsername && password === user.getPassword) {
         found = true;
       }

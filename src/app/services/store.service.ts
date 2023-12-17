@@ -6,7 +6,7 @@ import { Candy } from '../models/Candy';
 @Injectable({
   providedIn: 'root',
 })
-export class StoreService implements OnInit {
+export class StoreService {
   private storage: CandyStorage[] = [];
   private cart: CandyStorage[] = [];
 
@@ -15,11 +15,11 @@ export class StoreService implements OnInit {
     this.constructCart();
   }
 
-  ngOnInit(): void {}
-
   private constructCart() {
     let savedcart = sessionStorage.getItem('cart');
+
     if (savedcart == null) {
+      console.info('No cart to construct');
       return;
     }
     let cart = atob(savedcart).split(';');
@@ -97,31 +97,43 @@ export class StoreService implements OnInit {
     return of(success);
   }
 
-  public removeCandy(candy: Candy): Observable<boolean> {
-    let success = false;
+  // public removeCandy(candy: Candy): Observable<boolean> {
+  //   let success = false;
 
-    let counter = 0;
-    let found = false;
-    for (let candyStorage of this.storage) {
-      counter++;
-      if (candyStorage.candy == candy) {
-        found = true;
-        break;
-      }
-    }
+  //   let counter = 0;
+  //   let found = false;
+  //   for (let candyStorage of this.storage) {
+  //     counter++;
+  //     if (candyStorage.candy == candy) {
+  //       found = true;
+  //       break;
+  //     }
+  //   }
 
-    if (!found) {
-      return of(success);
-    }
+  //   if (!found) {
+  //     return of(success);
+  //   }
 
-    try {
-      this.storage.splice(counter, 1);
-      success = true;
-    } catch {
-      throw Error('no se pudo eliminar por alguna razon');
-    } finally {
-      return of(success);
+  //   try {
+  //     this.storage.splice(counter, 1);
+  //     success = true;
+  //   } catch {
+  //     throw Error('no se pudo eliminar por alguna razon');
+  //   } finally {
+  //     return of(success);
+  //   }
+  // }
+
+  public removeAllCandy(): Observable<boolean> {
+    let success = true;
+    for (let candyStorage of this.cart) {
+      this.removeFromCart(candyStorage).subscribe((result) => {
+        if (!result) {
+          success = false;
+        }
+      });
     }
+    return of(success);
   }
 
   public changeStockInCart(

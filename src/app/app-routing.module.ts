@@ -2,7 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StoreComponent } from './components/store/store.component';
 import { LoginComponent } from './components/login/login.component';
-import { alreadyLoggedGuard, authGuard } from './guards/auth.guard';
+import {
+  adminGuard,
+  alreadyLoggedGuard,
+  authGuard,
+  notAdminGuard,
+} from './guards/auth.guard';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   {
@@ -18,7 +24,12 @@ const routes: Routes = [
   {
     path: 'home',
     component: StoreComponent,
-    canActivate: [authGuard],
+    canActivate: [authGuard, notAdminGuard],
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [authGuard, adminGuard],
   },
   {
     path: '**',

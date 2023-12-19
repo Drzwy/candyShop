@@ -1,0 +1,29 @@
+<div class="view">
+  <img class="img" [src]="candyPreview.candy.photoLink" alt="Product Preview" />
+
+  <div class="content">
+    <div class="text">
+      <div class="titles">
+        <div class="title">{{ candyPreview.candy.name }}</div>
+        <div class="price">{{ candyPreview.candy.price }}</div>
+      </div>
+      <div class="subtitles">
+        {{ candyPreview.candy.flavour }} - {{ candyPreview.candy.colour }}
+      </div>
+      <div class="desc">{{ candyPreview.candy.description }}</div>
+    </div>
+
+    <div class="stock">
+      <input
+        class="input"
+        type="number"
+        disabled
+        [value]="candyPreview.stock"
+      />
+    </div>
+  </div>
+  <button (click)="addCandyToStorage()" [disabled]="!hasBeenChanged">
+    Añadir Caramelo
+  </button>
+  <button (click)="caca()">12312321</button>
+</div>

@@ -1,0 +1,25 @@
+.boton {
+  display: block;
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  height: 2em;
+  border: 0.15em solid white;
+  border-radius: 1em;
+  border-color: solid pink;
+
+  background-color: rgb(255, 0, 179);
+}
+
+.header {
+  height: 2em;
+  text-align: center;
+  justify-content: center;
+  background-color: pink;
+
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+
+  font-size: 1.5em;
+}

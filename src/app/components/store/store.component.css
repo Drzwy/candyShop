@@ -1,29 +1,67 @@
-.main {
+.top {
   display: flex;
-  height: 100%;
-  width: 100%;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.boton {
-  display: block;
-  position: absolute;
-  top: 0.5em;
-  left: 0.5em;
-  height: 2em;
-  border: 0.15em solid white;
-  border-radius: 1em;
-  border-color: solid pink;
+.header {
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-  background-color: rgb(255, 0, 179);
+.main {
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.catalogo {
+  flex-grow: 2;
+  max-width: 70%;
+  overflow-y: auto;
 }
 
 .carrito {
-  flex: 1;
-  width: 30%;
-  height: 100%;
+  flex-grow: 1;
   position: sticky;
+  top: 0;
+  min-width: 30%;
+  overflow-y: auto;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.store {
+/* Define the styles for the scrollbar track */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
 
+/* Define the styles for the scrollbar handle (thumb) */
+::-webkit-scrollbar-thumb {
+  background-color: #a0a0a0; /* Default color of the scrollbar handle */
+  border-radius: 6px; /* Rounded corners for the handle */
+}
+
+/* Define the styles for the scrollbar track on hover */
+::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Color of the scrollbar track */
+}
+
+/* Define the styles for the scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ff7eb9; /* Pinkish color of the scrollbar handle on hover */
+}
+
+/* Square scrollbar handle */
+::-webkit-scrollbar-thumb:vertical {
+  min-width: 12px; /* Set the minimum width to make it square */
+  min-height: 12px; /* Set the minimum height to make it square */
+}
+
+/* Pinkish color when the scrollbar handle is held */
+::-webkit-scrollbar-thumb:active {
+  background-color: #ff7eb9;
 }

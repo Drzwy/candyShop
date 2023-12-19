@@ -4,11 +4,15 @@
   <div *ngIf="cart.length == 0" class="message">
     No tienes artículos en el carrito
   </div>
-  <div class="spacebetween" *ngFor="let candyStorage of cart">
+  <div class="spacebetween">
     <app-candy-cart
+      *ngFor="let candyStorage of cart"
       [candyTaken]="candyStorage"
       (destroy)="remove($event)"
     ></app-candy-cart>
   </div>
-  <div *ngIf="!(cart.length == 0)" class="total">Total: ${{ calcTotal() }}</div>
+  <div *ngIf="!(cart.length == 0)" class="total">
+    <span> Total: ${{ calcTotal() }} </span>
+    <button class="buy-button">Comprar</button>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 .content {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   background-color: rgb(255, 204, 220);
 }
@@ -7,7 +8,6 @@
 .header {
   background-color: rgb(177, 6, 60);
   color: rgb(255, 204, 220);
-
   font-size: 1.5em;
   text-align: center;
   padding: 0.5rem;
@@ -20,12 +20,37 @@
   flex: 1;
 }
 
-.total {
-  height: 5em;
+.spacebetween {
   flex: 1;
-  font-size: 2em;
-  text-align: center;
+  overflow-y: auto;
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: rgb(177, 6, 60);
   color: white;
+}
+
+.total span {
+  font-size: 2.5em;
+  transform: scale(0.8);
+  text-align: center;
+  width: 100%; /* Expand horizontally to fill the available space */
+}
+
+.buy-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff7eb9;
+  color: white;
+  font-size: 3em;
+  font-weight: bold; /* Make the text bold */
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border: 15px solid #e6217a; /* Add a white square-wide outline */
 }

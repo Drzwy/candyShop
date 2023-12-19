@@ -1,0 +1,53 @@
+.view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+
+  .text {
+    display: flex;
+    flex-direction: column;
+
+    .titles {
+      display: flex;
+      align-items: center;
+
+      .title {
+        flex-grow: 1;
+        font-size: 3em;
+        display: flex;
+        align-items: center;
+        overflow-y: auto;
+      }
+
+      .price {
+        font-size: 2em;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .desc {
+      font-size: 1em;
+    }
+    .subtitles {
+      font-size: 1em;
+    }
+    .stock {
+      display: flex;
+      flex-direction: column;
+
+      .input {
+        flex-grow: 1;
+      }
+    }
+  }
+}

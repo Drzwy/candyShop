@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {} 
 
   public login(username: string, password: string): boolean {
     let success: boolean = false;

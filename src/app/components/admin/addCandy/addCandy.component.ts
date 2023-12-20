@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -47,17 +47,13 @@ export class AddCandyComponent implements OnInit {
     if (this.allValid()) {
       this.adminService
         .pushPreview(
-          new CandyStorage(
-            new Candy(
-              this.group.value.name,
-              this.group.value.desc,
-              this.group.value.flavour,
-              this.group.value.colour,
-              this.group.value.price,
-              this.group.value.photoLink
-            ),
-            this.group.value.stock
-          )
+          this.group.value.name,
+          this.group.value.desc,
+          this.group.value.flavour,
+          this.group.value.colour,
+          this.group.value.price,
+          this.group.value.photoLink,
+          this.group.value.stock
         )
         .subscribe((result) => {
           if (!result) {

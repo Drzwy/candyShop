@@ -1,11 +1,14 @@
 <div class="view">
-  <img class="img" [src]="candyPreview.candy.photoLink" alt="Product Preview" />
-
   <div class="content">
+    <img
+      class="img"
+      [src]="candyPreview.candy.photoLink"
+      alt="Product Preview"
+    />
     <div class="text">
       <div class="titles">
         <div class="title">{{ candyPreview.candy.name }}</div>
-        <div class="price">{{ candyPreview.candy.price }}</div>
+        <div class="price">${{ candyPreview.candy.price }}</div>
       </div>
       <div class="subtitles">
         {{ candyPreview.candy.flavour }} - {{ candyPreview.candy.colour }}
@@ -14,16 +17,18 @@
     </div>
 
     <div class="stock">
-      <input
-        class="input"
-        type="number"
-        disabled
-        [value]="candyPreview.stock"
-      />
+      <input type="number" disabled [value]="candyPreview.stock" />
     </div>
   </div>
-  <button (click)="addCandyToStorage()" [disabled]="!hasBeenChanged">
-    Añadir Caramelo
-  </button>
-  <button (click)="caca()">12312321</button>
+  <div class="divadd">
+    <button
+      class="addcandy"
+      (click)="addCandyToStorage()"
+      [disabled]="!hasBeenChanged"
+      [ngClass]="hasBeenChanged ? 'valid' : 'notvalid'"
+    >
+      Añadir Caramelo
+    </button>
+  </div>
+  <!-- <button (click)="caca()">12312321</button> -->
 </div>

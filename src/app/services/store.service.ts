@@ -88,13 +88,21 @@ export class StoreService {
 
   public insertStore(candy: Candy, stock: number): Observable<boolean> {
     let success: boolean = false;
-    let newCandyStorage = new CandyStorage(candy, stock);
-    if (stock > 1) {
-      success = true;
-      this.storage.push(newCandyStorage);
-    }
+    try {
+      let newCandyStorage = new CandyStorage(candy, stock);
+      for (let cs of this.storage) {
+        if (candy.name === cs.candyName) {
+          throw 'No se admiten duplicados';
+        }
+      }
 
-    return of(success);
+      this.storage.push(newCandyStorage);
+      success = true;
+    } catch {
+      alert('No se admiten caramelos duplicados');
+    } finally {
+      return of(success);
+    }
   }
 
   // public removeCandy(candy: Candy): Observable<boolean> {

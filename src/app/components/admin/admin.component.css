@@ -10,10 +10,11 @@
 }
 
 .addcandy {
-  flex-grow: 1;
+  flex: 1;
   display: flex;
 }
 
 .viewcandy {
-  flex-grow: 4;
+  flex: 2;
+  display: flex;
 }

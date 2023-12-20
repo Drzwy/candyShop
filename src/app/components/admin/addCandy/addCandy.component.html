@@ -1,80 +1,93 @@
 <div class="main" [formGroup]="group">
-  <div class="group">
-    <label for="name" class="label">Nombre del caramelo</label>
-    <input type="text" id="name" name="name" required formControlName="name" />
+  <div class="title">Añadir nuevo Dulce</div>
+
+  <div class="form">
+    <div class="group">
+      <label for="name" class="label">Nombre del caramelo</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        formControlName="name"
+      />
+    </div>
+
+    <div class="group">
+      <label for="description" class="label">Descripción del caramelo</label>
+      <input
+        type="text"
+        id="description"
+        name="description"
+        required
+        formControlName="desc"
+      />
+    </div>
+
+    <div class="group">
+      <label for="flavour" class="label">Sabor del caramelo</label>
+      <input
+        type="text"
+        id="flavour"
+        name="flavour"
+        required
+        formControlName="flavour"
+      />
+    </div>
+
+    <div class="group">
+      <label for="colour" class="label">Color del caramelo</label>
+      <input
+        type="text"
+        id="colour"
+        name="colour"
+        required
+        formControlName="colour"
+      />
+    </div>
+
+    <div class="group">
+      <label for="price" class="label">Precio por unidad</label>
+      <input
+        type="number"
+        id="price"
+        name="price"
+        step="0.01"
+        required
+        formControlName="price"
+        (input)="validateNonNegative(group.get('price'))"
+      />
+    </div>
+
+    <div class="group">
+      <label for="photoLink" class="label">Foto del caramelo</label>
+      <input
+        type="text"
+        id="photoLink"
+        name="photoLink"
+        required
+        formControlName="photoLink"
+      />
+    </div>
+
+    <div class="group">
+      <label for="candyStorage" class="label">Número en bodega</label>
+      <input
+        type="number"
+        id="candyStorage"
+        name="candyStorage"
+        step="1"
+        required
+        formControlName="stock"
+        (input)="validateNonNegative(group.get('stock'))"
+      />
+    </div>
   </div>
 
-  <div class="group">
-    <label for="description" class="label">Descripción del caramelo</label>
-    <input
-      type="text"
-      id="description"
-      name="description"
-      required
-      formControlName="desc"
-    />
-  </div>
-
-  <div class="group">
-    <label for="flavour" class="label">Sabor del caramelo</label>
-    <input
-      type="text"
-      id="flavour"
-      name="flavour"
-      required
-      formControlName="flavour"
-    />
-  </div>
-
-  <div class="group">
-    <label for="colour" class="label">Color del caramelo</label>
-    <input
-      type="text"
-      id="colour"
-      name="colour"
-      required
-      formControlName="colour"
-    />
-  </div>
-
-  <div class="group">
-    <label for="price" class="label">Precio por unidad</label>
-    <input
-      type="number"
-      id="price"
-      name="price"
-      step="0.01"
-      required
-      formControlName="price"
-      (input)="validateNonNegative(group.get('price'))"
-    />
-  </div>
-
-  <div class="group">
-    <label for="photoLink" class="label">Foto del caramelo</label>
-    <input
-      type="text"
-      id="photoLink"
-      name="photoLink"
-      required
-      formControlName="photoLink"
-    />
-  </div>
-
-  <div class="group">
-    <label for="candyStorage" class="label">Número en bodega</label>
-    <input
-      type="number"
-      id="candyStorage"
-      name="candyStorage"
-      step="1"
-      required
-      formControlName="stock"
-      (input)="validateNonNegative(group.get('stock'))"
-    />
-  </div>
-
-  <p [ngClass]="{ caca: actualizadoConExito, invisible: !actualizadoConExito }">
+  <p
+    class="msg"
+    [ngClass]="{ anim: actualizadoConExito, invisible: !actualizadoConExito }"
+  >
     Actualizado con éxito
   </p>
 </div>

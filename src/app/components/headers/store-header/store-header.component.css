@@ -7,7 +7,7 @@
   border: 0.15em solid white;
   border-radius: 1em;
   border-color: solid pink;
-
+  padding: 0 1em 0 1em;
   background-color: rgb(255, 0, 179);
 }
 

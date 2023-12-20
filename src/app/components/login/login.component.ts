@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  ngOnInit() {} 
+  ngOnInit() {}
 
   public login(username: string, password: string): boolean {
     let success: boolean = false;
@@ -57,9 +57,13 @@ export class LoginComponent implements OnInit {
       .registerUser(username, password, type)
       .subscribe((response) => {
         if (response) {
+          alert('Usuario correctamente registrado.');
           success = true;
+          this.username.reset();
+          this.password.reset();
+          this.isRegistering = !this.isRegistering
         } else {
-          alert('error');
+          console.error('Ocurrió un error al registrar');
         }
       });
     return success;

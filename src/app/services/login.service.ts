@@ -139,6 +139,12 @@ export class LoginService implements OnInit {
         password,
         type == UserRole.User ? UserRole.User : UserRole.Admin
       );
+      for (let user of this.users) {
+        if ((username === user.getUsername)) {
+          alert('Usuario ya registrado');
+          throw 'Usuario ya registrado';
+        }
+      }
       this.users.push(newuser);
       console.log(newuser);
     } catch {

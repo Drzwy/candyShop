@@ -1,16 +1,30 @@
 .view {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   text-align: center;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0.5em;
+  background-color: rgb(147, 23, 46);
+  color: rgb(0, 0, 0);
+  justify-content: space-between;
 }
 
 .content {
+  padding: 0.5em;
   display: flex;
   flex-direction: column;
   text-align: left;
+  background-color: hsla(0, 0%, 100%, 0.757);
+
+  .img {
+    width: 100%;
+    height: 15em;
+    object-fit: cover;
+    border: 0.5em solid rgb(201, 127, 141);
+    background-color: rgb(255, 255, 255);
+  }
 
   .text {
     display: flex;
@@ -18,7 +32,8 @@
 
     .titles {
       display: flex;
-      align-items: center;
+      font-weight: 500;
+      gap: 0.2em;
 
       .title {
         flex-grow: 1;
@@ -41,13 +56,42 @@
     .subtitles {
       font-size: 1em;
     }
-    .stock {
-      display: flex;
-      flex-direction: column;
-
-      .input {
-        flex-grow: 1;
-      }
-    }
   }
+  .stock {
+    width: 100%;
+    margin: 0.5em 0 0.5em 0;
+    display: flex;
+    flex-direction: column;
+  }
+}
+.divadd {
+  display: flex;
+  margin: 1em;
+  flex-direction: column;
+  align-items: center;
+
+  .addcandy {
+    width: 80%;
+    height: 3em;
+
+    font-size: 1.5em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.valid {
+  cursor: pointer;
+  background-color: rgb(255, 41, 76);
+  border: 0.2rem solid rgb(255, 128, 128);
+  font-weight: bold;
+  color: white; 
+}
+
+.notvalid {
+  background-color: rgb(75, 24, 33);
+  border: 0.2rem solid rgb(45, 11, 28);
+  font-weight: 400;
+  color: rgb(130, 105, 116);
 }

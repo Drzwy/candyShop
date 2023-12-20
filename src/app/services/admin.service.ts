@@ -29,11 +29,11 @@ export class AdminService {
     try {
       this.candyStoragePreview = candyStorage;
       this.hasBeenChanged = true;
-    } catch {
-      return of(false);
-    } finally {
       console.log(this.candyStoragePreview);
       return of(true);
+    } catch (error) {
+      console.error(error);
+      return of(false);
     }
   }
 

@@ -29,12 +29,11 @@ export class ViewCandyComponent implements OnInit {
         console.log(hasChanged);
       })
     );
-
-    // FIX: algo de aqui no funciona
-    // TODO: preguntar
   }
 
-  public addCandyToStorage() {}
+  public addCandyToStorage() {
+
+  }
   public caca() {
     console.log(this.candyPreview);
     console.log(this.hasBeenChanged);
